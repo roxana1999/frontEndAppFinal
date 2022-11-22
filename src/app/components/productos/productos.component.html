@@ -25,7 +25,7 @@
           <td>{{ p.existencia }}</td>
           <td>
             <div class="d-flex flex-column flex-md-row" style="gap: 10px">
-              <a class="btn btn-secondary"> Modificar</a>
+              <a [routerLink]="['actualizarProducto', p.codigo]" class="btn btn-secondary"> Modificar</a>
               <a class="btn btn-danger"> Eliminar</a>
             </div>
           </td>
