@@ -1,0 +1,24 @@
+<div class="espacio"></div>
+<h3>Eliminar producto</h3>
+<div *ngIf="success; else mostrarForm">
+    <div class="alert alert-success" role="alert">
+        {{mensaje}}
+    </div>
+    <button class="btn btn-secondary" routerLink="/productos">Volver</button>
+</div>
+<div>
+    <ng-template #mostrarForm>
+        <b>Código: </b> {{producto.codigo}}<br>
+        <b>Nombre del producto:</b> {{producto.nombre}}<br>
+        <b>Precio de venta:</b> {{producto.precioDeVenta}} ₲<br>
+        <b>Existencia:</b> {{producto.existencia}}
+        <div class="espacio-15"></div>
+        <div class="d-flex" style="gap: 10px;">
+            <button class="btn btn-danger" (click)="eliminarProducto()">Eliminar este producto</button>
+            <button class="btn btn-secondary" routerLink="/productos">Cancelar</button>
+        </div>
+    </ng-template>
+</div>
+<div class="espacio"></div>
+
+<router-outlet></router-outlet>

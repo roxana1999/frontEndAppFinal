@@ -1,5 +1,6 @@
 <div class="espacio"></div>
 <h3>Crear nuevo producto</h3>
+<div class="espacio-15"></div>
 <div *ngIf="success; else mostrarForm">
     <div class="alert alert-success" role="alert">
         {{mensaje}}
@@ -15,7 +16,7 @@
         Nombre del producto <input class="form-control" [(ngModel)]="producto.nombre" /><br />
     </div>
     <div class="form-group">
-        Precio de venta del producto (Gs.)
+        Precio de venta del producto (₲)
         <input class="form-control" type="number" [(ngModel)]="producto.precioDeVenta" /><br />
     </div>
     <div class="form-group">

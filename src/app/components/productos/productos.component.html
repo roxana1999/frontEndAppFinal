@@ -12,21 +12,21 @@
         <tr>
           <th scope="column">Código</th>
           <th scope="column">Nombre</th>
-          <th scope="column">Precio</th>
-          <th scope="column">Existencia</th>
-          <th scope="column">Acciones</th>
+          <th class="text-end" scope="column">Precio</th>
+          <th class="text-center" scope="column">Existencia</th>
+          <th scope="column"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let p of listaProductos">
           <th scope="row">{{ p.codigo }}</th>
           <td>{{ p.nombre }}</td>
-          <td>{{ p.precioDeVenta }}</td>
-          <td>{{ p.existencia }}</td>
+          <td class="text-end text-nowrap">{{ p.precioDeVenta }} ₲</td>
+          <td class="text-center">{{ p.existencia }}</td>
           <td>
-            <div class="d-flex flex-column flex-md-row" style="gap: 10px">
+            <div class="d-flex flex-column flex-md-row" style="gap: 10px;">
               <a [routerLink]="['actualizarProducto', p.codigo]" class="btn btn-secondary"> Modificar</a>
-              <a class="btn btn-danger"> Eliminar</a>
+              <a [routerLink]="['eliminarProducto', p.codigo]" class="btn btn-danger"> Eliminar</a>
             </div>
           </td>
         </tr>
