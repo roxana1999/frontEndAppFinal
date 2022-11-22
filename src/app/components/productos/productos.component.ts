@@ -13,9 +13,6 @@ export class ProductosComponent implements OnInit {
   constructor() {}
   
   ngOnInit(): void {
-    if (localStorage.getItem('listaProductos')==null){
-      localStorage.setItem('listaProductos', JSON.stringify(listaProductos));
-    }
     this.listaProductos = JSON.parse(localStorage.getItem('listaProductos')!);
   }
 }
