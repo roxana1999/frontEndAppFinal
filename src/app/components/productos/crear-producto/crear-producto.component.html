@@ -1,0 +1,38 @@
+CODIGO {{ producto.codigo }}<br />
+NOMBRE {{ producto.nombre }}<br />
+PRECIO {{ producto.precioDeVenta }}<br />
+EXISTENCIA {{ producto.existencia }}
+<h3>Crear nuevo producto</h3>
+<div *ngIf="success; else mostrarForm">
+    <div class="alert alert-success" role="alert">
+        {{mensaje}}
+    </div>
+    <button class="btn btn-secondary" routerLink="/productos">Volver</button>
+</div>
+<ng-template #mostrarForm>
+    <div class="form-group">
+        Código del producto
+        <input class="form-control" [(ngModel)]="producto.codigo" disabled="true" /><br />
+    </div>
+    <div class="form-group">
+        Nombre del producto <input class="form-control" [(ngModel)]="producto.nombre" /><br />
+    </div>
+    <div class="form-group">
+        Precio de venta del producto (Gs.)
+        <input class="form-control" type="number" [(ngModel)]="producto.precioDeVenta" /><br />
+    </div>
+    <div class="form-group">
+        Existencia del producto
+        <input class="form-control" type="number" [(ngModel)]="producto.existencia" /><br />
+    </div>
+    <div class="espacio"></div>
+    <button (click)="agregarProducto()" class="btn btn-primary">
+        Agregar producto
+    </button>
+</ng-template>
+<div class="espacio"></div>
+<div *ngIf="warning" class="alert alert-warning" role="alert">
+    {{mensaje}}
+</div>
+
+<router-outlet></router-outlet>
