@@ -8,6 +8,7 @@ import { CrearProductoComponent } from './components/productos/crear-producto/cr
 import { FormsModule } from '@angular/forms';
 import { ActualizarProductoComponent } from './components/productos/actualizar-producto/actualizar-producto.component';
 import { EliminarProductoComponent } from './components/productos/eliminar-producto/eliminar-producto.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { EliminarProductoComponent } from './components/productos/eliminar-produ
     ProductosComponent,
     CrearProductoComponent,
     ActualizarProductoComponent,
-    EliminarProductoComponent
+    EliminarProductoComponent,
+    ClientesComponent
   ],
   imports: [
     BrowserModule,

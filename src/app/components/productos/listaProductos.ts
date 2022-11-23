@@ -79,6 +79,3 @@ export const listaProductos: Producto[] = [
   new Producto(76, 'Licor Cloudberry', 126000, 57),
   new Producto(77, 'Salsa verde original Frankfurter', 91000, 32),
 ];
-
-if (localStorage.getItem('listaProductos')==null) 
-  localStorage.setItem('listaProductos', JSON.stringify(listaProductos));

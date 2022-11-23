@@ -9,10 +9,11 @@ import { listaProductos } from './listaProductos';
 })
 export class ProductosComponent implements OnInit {
   listaProductos : Producto[] = [];
-  ultimoId = listaProductos.length;
   constructor() {}
   
   ngOnInit(): void {
+    if (localStorage.getItem('listaProductos')==null) 
+      localStorage.setItem('listaProductos', JSON.stringify(listaProductos));
     this.listaProductos = JSON.parse(localStorage.getItem('listaProductos')!);
   }
 }

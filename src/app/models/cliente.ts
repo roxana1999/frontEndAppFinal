@@ -1,5 +1,11 @@
 export class Cliente {
     "ruc": number;
-    "nombre y apellido": string;
+    "nombreApellido": string;
     "email" : string;
+
+    constructor (ruc: number, nombreApellido: string, email: string){
+        this.ruc = ruc;
+        this.nombreApellido = nombreApellido;
+        this.email = email;
+    }
 }
