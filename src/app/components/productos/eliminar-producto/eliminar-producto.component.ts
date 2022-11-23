@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
+import { encontrarProducto } from '../funciones/encontrarProducto';
 
 @Component({
   selector: 'app-eliminar-producto',
@@ -8,7 +9,6 @@ import { Producto } from 'src/app/models/producto';
   styleUrls: ['./eliminar-producto.component.css']
 })
 export class EliminarProductoComponent implements OnInit {
-  codigo!: number;
   index!: number;
   listaProductos: Producto[] = [];
   success: boolean = false;
@@ -18,10 +18,9 @@ export class EliminarProductoComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.codigo = this.route.snapshot.params['codigo'];
+    let codigo = this.route.snapshot.params['codigo'];
     this.listaProductos = JSON.parse(localStorage.getItem('listaProductos')!);
-    this.producto = this.listaProductos.find(element => element.codigo == this.codigo)!;
-    this.index = this.listaProductos.indexOf(this.producto);
+    [this.producto, this.index] = encontrarProducto(this.listaProductos, codigo);
   }
 
   eliminarProducto(){
