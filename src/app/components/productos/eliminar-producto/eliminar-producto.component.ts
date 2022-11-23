@@ -11,7 +11,7 @@ import { encontrarProducto } from '../funciones/encontrarProducto';
 export class EliminarProductoComponent implements OnInit {
   index!: number;
   listaProductos: Producto[] = [];
-  success: boolean = false;
+  success!: boolean;
   mensaje: string = "";
   producto!: Producto;
   
