@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
+import { evaluarExistenciaCliente } from '../funciones/evaluarExistenciaCliente';
 import { evaluarInputsCliente } from '../funciones/evaluarInputsCliente';
 
 @Component({
@@ -12,7 +13,7 @@ export class CrearClienteComponent implements OnInit {
   listaClientes: Cliente[] = [];
   warning!: boolean;
   success!: boolean;
-  mensaje: string = "";
+  mensaje!: string;
 
   constructor() { }
 
@@ -23,6 +24,8 @@ export class CrearClienteComponent implements OnInit {
     this.warning = false;
     this.listaClientes = JSON.parse(localStorage.getItem('listaClientes')!);
     [this.warning, this.mensaje] = evaluarInputsCliente(this.cliente, this.listaClientes);
+    if (!this.warning)
+      [this.warning, this.mensaje] = evaluarExistenciaCliente(this.cliente, this.listaClientes);
     if (!this.warning){
       this.listaClientes.push(this.cliente);
       localStorage.setItem('listaClientes', JSON.stringify(this.listaClientes));
