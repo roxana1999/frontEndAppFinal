@@ -1,0 +1,36 @@
+<div class="espacio"></div>
+<h3>Modificar datos de cliente</h3>
+<div class="espacio-15"></div>
+<div *ngIf="error || success; else mostrarForm">
+    <div *ngIf="error"  class="alert alert-danger" role="alert">
+        {{mensaje}}
+    </div>
+    <div *ngIf="success"  class="alert alert-success" role="alert">
+        {{mensaje}}
+    </div>
+    <button class="btn btn-secondary" routerLink="/clientes">Volver</button>
+</div>
+
+<div>
+    <ng-template #mostrarForm>
+        <div class="form-group">
+            RUC
+            <input class="form-control" [(ngModel)]="cliente.ruc" disabled="true" /><br />
+        </div>
+        <div class="form-group">
+            Nombre/s y Apellido/s <input class="form-control" [(ngModel)]="cliente.nombreApellido" /><br />
+        </div>
+        <div class="form-group">
+            Email
+            <input class="form-control" [(ngModel)]="cliente.email" /><br />
+        </div>
+        <div class="espacio"></div>
+        <button  (click)="actualizarCliente()" class="btn btn-primary">Actualizar</button>
+    </ng-template>
+</div>
+<div class="espacio"></div>
+<div *ngIf="warning" class="alert alert-warning" role="alert">
+    {{mensaje}}
+</div>
+
+<router-outlet></router-outlet>
