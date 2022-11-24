@@ -1,6 +1,6 @@
 import { Cliente } from 'src/app/models/cliente';
 
-export function evaluarInputsCliente(cliente: Cliente, listaClientes: Cliente[]): [boolean, string] {
+export function evaluarInputsCliente(cliente: Cliente): [boolean, string] {
   let mensaje = '';
   let warning = false;
   if (isNaN(cliente.ruc) || typeof cliente.ruc != 'number')

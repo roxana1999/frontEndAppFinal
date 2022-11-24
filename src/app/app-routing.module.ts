@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ActualizarClienteComponent } from './components/clientes/actualizar-cliente/actualizar-cliente.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { CrearClienteComponent } from './components/clientes/crear-cliente/crear-cliente.component';
 import { EliminarClienteComponent } from './components/clientes/eliminar-cliente/eliminar-cliente.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'productos/eliminarProducto/:codigo', component: EliminarProductoComponent},
   {path: 'clientes', component: ClientesComponent},
   {path: 'clientes/crearCliente', component: CrearClienteComponent},
+  {path: 'clientes/actualizarCliente/:ruc', component: ActualizarClienteComponent},
   {path: 'clientes/eliminarCliente/:ruc', component: EliminarClienteComponent},
 ];
 

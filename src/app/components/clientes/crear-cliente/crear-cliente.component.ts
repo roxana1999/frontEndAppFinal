@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { evaluarExistenciaCliente } from '../funciones/evaluarExistenciaCliente';
 import { evaluarInputsCliente } from '../funciones/evaluarInputsCliente';
+import { obtenerListaClientes } from '../funciones/obtenerLIstaClientes';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -9,8 +10,8 @@ import { evaluarInputsCliente } from '../funciones/evaluarInputsCliente';
   styleUrls: ['./crear-cliente.component.css']
 })
 export class CrearClienteComponent implements OnInit {
-  cliente: Cliente = new Cliente(NaN,"","");
   listaClientes: Cliente[] = [];
+  cliente: Cliente = new Cliente(NaN,"","");
   warning!: boolean;
   success!: boolean;
   mensaje!: string;
@@ -22,8 +23,8 @@ export class CrearClienteComponent implements OnInit {
 
   agregarCliente(){
     this.warning = false;
-    this.listaClientes = JSON.parse(localStorage.getItem('listaClientes')!);
-    [this.warning, this.mensaje] = evaluarInputsCliente(this.cliente, this.listaClientes);
+    this.listaClientes = obtenerListaClientes();
+    [this.warning, this.mensaje] = evaluarInputsCliente(this.cliente);
     if (!this.warning)
       [this.warning, this.mensaje] = evaluarExistenciaCliente(this.cliente, this.listaClientes);
     if (!this.warning){

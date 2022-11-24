@@ -14,9 +14,9 @@ export class ActualizarClienteComponent implements OnInit {
   cliente!: Cliente;
   index!: number;
   warning!: boolean;
-  mensaje!: string;
   success!: boolean;
   error!: boolean;
+  mensaje!: string;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -24,15 +24,13 @@ export class ActualizarClienteComponent implements OnInit {
     let ruc = this.route.snapshot.params['ruc'];
     this.listaClientes = obtenerListaClientes();
     this.index = this.listaClientes.findIndex(cliente => cliente.ruc == ruc);
-    if (this.index!=-1)
-      this.cliente = this.listaClientes[this.index]; 
-    else
-      this.error= true; this.mensaje="El ruc no existe.";
+    if (this.index!=-1) this.cliente = this.listaClientes[this.index]; 
+    else this.error= true; this.mensaje="El ruc no existe.";
   }
 
   actualizarCliente(){
     this.warning = false;
-    [this.warning, this.mensaje] = evaluarInputsCliente(this.cliente, this.listaClientes);
+    [this.warning, this.mensaje] = evaluarInputsCliente(this.cliente);
     if (!this.warning){
       localStorage.setItem('listaClientes', JSON.stringify(this.listaClientes)); 
       this.success= true; this.mensaje = "Cliente actualizado exitosamente." 

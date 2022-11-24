@@ -11,6 +11,7 @@ import { EliminarProductoComponent } from './components/productos/eliminar-produ
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { CrearClienteComponent } from './components/clientes/crear-cliente/crear-cliente.component';
 import { EliminarClienteComponent } from './components/clientes/eliminar-cliente/eliminar-cliente.component';
+import { ActualizarClienteComponent } from './components/clientes/actualizar-cliente/actualizar-cliente.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EliminarClienteComponent } from './components/clientes/eliminar-cliente
     EliminarProductoComponent,
     ClientesComponent,
     CrearClienteComponent,
-    EliminarClienteComponent
+    EliminarClienteComponent,
+    ActualizarClienteComponent
   ],
   imports: [
     BrowserModule,
