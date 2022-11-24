@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
 import { encontrarProducto } from '../funciones/encontrarProducto';
+import { obtenerListaProductos } from '../funciones/obtenerListaProductos';
 
 @Component({
   selector: 'app-eliminar-producto',
@@ -12,6 +13,7 @@ export class EliminarProductoComponent implements OnInit {
   index!: number;
   listaProductos: Producto[] = [];
   success!: boolean;
+  error!: boolean;
   mensaje: string = "";
   producto!: Producto;
   
@@ -19,8 +21,10 @@ export class EliminarProductoComponent implements OnInit {
 
   ngOnInit(): void {
     let codigo = this.route.snapshot.params['codigo'];
-    this.listaProductos = JSON.parse(localStorage.getItem('listaProductos')!);
-    [this.producto, this.index] = encontrarProducto(this.listaProductos, codigo);
+    this.listaProductos = obtenerListaProductos();
+    this.index = this.listaProductos.findIndex( producto => producto.codigo == codigo);
+    if (this.index != -1) this.producto = this.listaProductos[this.index];
+    else this.error= true; this.mensaje="El ruc no existe.";
   }
 
   eliminarProducto(){

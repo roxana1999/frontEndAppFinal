@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
-import { listaProductos } from './listaProductos';
+import { obtenerListaProductos } from './funciones/obtenerListaProductos';
 
 @Component({
   selector: 'app-productos',
@@ -12,8 +12,6 @@ export class ProductosComponent implements OnInit {
   constructor() {}
   
   ngOnInit(): void {
-    if (localStorage.getItem('listaProductos')==null) 
-      localStorage.setItem('listaProductos', JSON.stringify(listaProductos));
-    this.listaProductos = JSON.parse(localStorage.getItem('listaProductos')!);
+    this.listaProductos = obtenerListaProductos();
   }
 }

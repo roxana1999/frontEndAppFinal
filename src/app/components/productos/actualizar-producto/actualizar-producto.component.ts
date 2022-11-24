@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { ActivatedRoute } from '@angular/router';
 import { evaluarInputsProducto } from '../funciones/evaluarInputsProducto';
-import { encontrarProducto } from '../funciones/encontrarProducto';
+import { obtenerListaProductos } from '../funciones/obtenerListaProductos';
 
 @Component({
   selector: 'app-actualizar-producto',
@@ -14,6 +14,7 @@ export class ActualizarProductoComponent implements OnInit {
   listaProductos: Producto[] = [];
   producto!: Producto;
   success!: boolean;
+  error!: boolean;
   warning!: boolean;
   mensaje!: string;
 
@@ -21,21 +22,19 @@ export class ActualizarProductoComponent implements OnInit {
 
   ngOnInit(): void {
     let codigo = this.route.snapshot.params['codigo'];
-    this.listaProductos = JSON.parse(localStorage.getItem('listaProductos')!);
-    [this.producto, this.index] = encontrarProducto(this.listaProductos, codigo);
-    // console.log("lista de productos",this.listaProductos);
-    // console.log("produto",this.producto);
-    // console.log("index",this.index);
+    this.listaProductos = obtenerListaProductos();
+    this.index = this.listaProductos.findIndex( producto => producto.codigo == codigo);
+    if (this.index != -1) this.producto = this.listaProductos[this.index];
+    else this.error= true; this.mensaje="El ruc no existe.";
   }
 
   actualizarProducto(){
     this.warning = false;
     [this.warning, this.mensaje] = evaluarInputsProducto(this.producto);
     if (!this.warning){
-      this.listaProductos[this.index] = this.producto;
       localStorage.setItem('listaProductos', JSON.stringify(this.listaProductos));
       this.success = true; this.mensaje = 'Producto actualizado exitosamente.';
-      return;
     }
+    return;
   }
 }

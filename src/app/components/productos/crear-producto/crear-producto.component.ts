@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { evaluarInputsProducto } from '../funciones/evaluarInputsProducto';
+import { obtenerListaProductos } from '../funciones/obtenerListaProductos';
 
 @Component({
   selector: 'app-crear-producto',
@@ -8,9 +9,9 @@ import { evaluarInputsProducto } from '../funciones/evaluarInputsProducto';
   styleUrls: ['./crear-producto.component.css']
 })
 export class CrearProductoComponent implements OnInit {
-  listaProductos: Producto[] = JSON.parse(localStorage.getItem('listaProductos')!);
-  siguienteID = this.listaProductos[this.listaProductos.length-1].codigo+1;
-  producto : Producto = new Producto(this.siguienteID, "", 1, 1);
+  listaProductos: Producto[] = [];
+  siguienteID!: number;
+  producto!: Producto;
   success!: boolean;
   warning!: boolean;
   mensaje!: string;
@@ -18,6 +19,9 @@ export class CrearProductoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.listaProductos = obtenerListaProductos();
+    this.siguienteID = this.listaProductos[this.listaProductos.length-1].codigo+1;
+    this.producto = new Producto(this.siguienteID, "", NaN, NaN);
   }
 
   agregarProducto(){
