@@ -1,7 +1,10 @@
 <div class="espacio"></div>
 <h3>Eliminar cliente</h3>
-<div *ngIf="success; else mostrarForm">
-    <div class="alert alert-success" role="alert">
+<div *ngIf="error || success; else mostrarForm">
+    <div *ngIf="error"  class="alert alert-danger" role="alert">
+        {{mensaje}}
+    </div>
+    <div *ngIf="success"  class="alert alert-success" role="alert">
         {{mensaje}}
     </div>
     <button class="btn btn-secondary" routerLink="/clientes">Volver</button>

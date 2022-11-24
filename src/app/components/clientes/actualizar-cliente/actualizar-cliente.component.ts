@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
 import { evaluarInputsCliente } from '../funciones/evaluarInputsCliente';
-import { obtenerListaClientes } from '../funciones/obtenerLIstaClientes';
+import { obtenerListaClientes } from '../funciones/obtenerListaClientes';
 
 @Component({
   selector: 'app-actualizar-cliente',

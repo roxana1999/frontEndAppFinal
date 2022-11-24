@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { evaluarExistenciaRUC } from '../funciones/evaluarExistenciaRUC';
 import { evaluarInputsCliente } from '../funciones/evaluarInputsCliente';
-import { obtenerListaClientes } from '../funciones/obtenerLIstaClientes';
+import { obtenerListaClientes } from '../funciones/obtenerListaClientes';
 
 @Component({
   selector: 'app-crear-cliente',

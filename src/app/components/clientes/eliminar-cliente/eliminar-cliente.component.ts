@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
-import { obtenerListaClientes } from '../funciones/obtenerLIstaClientes';
+import { obtenerListaClientes } from '../funciones/obtenerListaClientes';
 
 @Component({
   selector: 'app-eliminar-cliente',
@@ -9,7 +9,6 @@ import { obtenerListaClientes } from '../funciones/obtenerLIstaClientes';
   styleUrls: ['./eliminar-cliente.component.css']
 })
 export class EliminarClienteComponent implements OnInit {
-  ruc!: number;
   listaClientes: Cliente[] = [];
   cliente!: Cliente;
   index!: number;
@@ -20,10 +19,10 @@ export class EliminarClienteComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.ruc = this.route.snapshot.params['ruc'];
+    let ruc = this.route.snapshot.params['ruc'];
     this.listaClientes = obtenerListaClientes();
-    this.index = this.listaClientes.findIndex(cliente => cliente.ruc == this.ruc)
-    if (this.index!=-1) this.cliente = this.listaClientes[this.index];
+    this.index = this.listaClientes.findIndex(cliente => cliente.ruc == ruc);
+    if (this.index!=-1) this.cliente = this.listaClientes[this.index]; 
     else this.error= true; this.mensaje="El ruc no existe.";
   }
 
