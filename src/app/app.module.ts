@@ -10,6 +10,7 @@ import { ActualizarProductoComponent } from './components/productos/actualizar-p
 import { EliminarProductoComponent } from './components/productos/eliminar-producto/eliminar-producto.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { CrearClienteComponent } from './components/clientes/crear-cliente/crear-cliente.component';
+import { EliminarClienteComponent } from './components/clientes/eliminar-cliente/eliminar-cliente.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CrearClienteComponent } from './components/clientes/crear-cliente/crear
     ActualizarProductoComponent,
     EliminarProductoComponent,
     ClientesComponent,
-    CrearClienteComponent
+    CrearClienteComponent,
+    EliminarClienteComponent
   ],
   imports: [
     BrowserModule,

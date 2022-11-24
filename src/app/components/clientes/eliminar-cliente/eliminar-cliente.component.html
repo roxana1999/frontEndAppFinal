@@ -1,0 +1,23 @@
+<div class="espacio"></div>
+<h3>Eliminar cliente</h3>
+<div *ngIf="success; else mostrarForm">
+    <div class="alert alert-success" role="alert">
+        {{mensaje}}
+    </div>
+    <button class="btn btn-secondary" routerLink="/clientes">Volver</button>
+</div>
+<div>
+    <ng-template #mostrarForm>
+        <b>RUC: </b> {{cliente.ruc}}<br>
+        <b>Nombre/s y Apellidos/s:</b> {{cliente.nombreApellido}}<br>
+        <b>Email:</b> {{cliente.email}}<br>
+        <div class="espacio-15"></div>
+        <div class="d-flex" style="gap: 10px;">
+            <button class="btn btn-danger" (click)="eliminarCliente()">Eliminar cliente</button>
+            <button class="btn btn-secondary" routerLink="/clientes">Cancelar</button>
+        </div>
+    </ng-template>
+</div>
+<div class="espacio"></div>
+
+<router-outlet></router-outlet>
