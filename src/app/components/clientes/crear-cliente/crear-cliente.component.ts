@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
-import { evaluarExistenciaCliente } from '../funciones/evaluarExistenciaCliente';
+import { evaluarExistenciaRUC } from '../funciones/evaluarExistenciaRUC';
 import { evaluarInputsCliente } from '../funciones/evaluarInputsCliente';
 import { obtenerListaClientes } from '../funciones/obtenerLIstaClientes';
 
@@ -26,7 +26,7 @@ export class CrearClienteComponent implements OnInit {
     this.listaClientes = obtenerListaClientes();
     [this.warning, this.mensaje] = evaluarInputsCliente(this.cliente);
     if (!this.warning)
-      [this.warning, this.mensaje] = evaluarExistenciaCliente(this.cliente, this.listaClientes);
+      [this.warning, this.mensaje] = evaluarExistenciaRUC(this.cliente.ruc, this.listaClientes);
     if (!this.warning){
       this.listaClientes.push(this.cliente);
       localStorage.setItem('listaClientes', JSON.stringify(this.listaClientes));
