@@ -10,6 +10,7 @@ import { EliminarProductoComponent } from './components/productos/eliminar-produ
 import { ProductosComponent } from './components/productos/productos.component';
 import { FacturaComponent } from './components/factura/factura.component';
 import { VerDetalleComponent } from './components/factura/ver-detalle/ver-detalle.component';
+import { RegistrarComponent } from './components/factura/registrar/registrar.component';
 
 const routes: Routes = [
   {path: 'productos', component: ProductosComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'clientes/eliminarCliente/:ruc', component: EliminarClienteComponent},
   {path: 'facturas', component: FacturaComponent},
   {path: 'facturas/verDetalle/:id', component: VerDetalleComponent},
+  {path: 'facturas/registrar', component: RegistrarComponent},
 ];
 
 @NgModule({
