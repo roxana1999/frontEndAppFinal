@@ -1,6 +1,10 @@
+import { DatePipe } from "@angular/common";
 import { Factura } from "src/app/models/Factura";
 import { listaClientes } from "../clientes/listaClientes";
 import { detalles } from "./detalles";
+
+const datepipe: DatePipe = new DatePipe('en-US')
+
 export const listaFacturas: Factura[] = [
     new Factura(1,new Date(), 1000, listaClientes[0], detalles),
     new Factura(2,new Date('2021/10/11'), 1001, listaClientes[1], detalles),

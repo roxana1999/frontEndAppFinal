@@ -12,7 +12,15 @@
         <thead>
           <tr>
             <th scope="column">ID</th>
-            <th scope="column">Fecha</th>
+            <th scope="column" style="display: flex;align-items: flex-end;">
+              Fecha
+              <mat-date-range-input [formGroup]="range" [rangePicker]="picker" class="hidden">
+                <input matStartDate formControlName="start" class="hidden">
+                <input matEndDate formControlName="end" class="hidden">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker class="hidden"></mat-date-range-picker>
+            </th>
             <th scope="column">Numero</th>
             <th scope="column">Cliente</th>
             <th scope="column">total</th>

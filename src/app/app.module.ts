@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MaterialExampleModule} from '../material.module';
+import {MatNativeDateModule} from '@angular/material/core';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { CrearProductoComponent } from './components/productos/crear-producto/crear-producto.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ActualizarProductoComponent } from './components/productos/actualizar-producto/actualizar-producto.component';
 import { EliminarProductoComponent } from './components/productos/eliminar-producto/eliminar-producto.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
@@ -34,7 +39,13 @@ import { VerDetalleComponent } from './components/factura/ver-detalle/ver-detall
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatNativeDateModule,
+    HttpClientModule,
+    MaterialExampleModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
