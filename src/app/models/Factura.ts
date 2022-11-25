@@ -1,9 +1,12 @@
+import { DatePipe } from "@angular/common";
 import { Cliente } from "./cliente";
 import { Detalle } from "./Detalle";
 
+
+const datepipe: DatePipe = new DatePipe('en-US')
 export class Factura {
     "id" : number;
-    "fecha" : Date;
+    "fecha" : string;
     "numeroFactura": number;
     "cliente": Cliente;
     "total": number;
@@ -11,7 +14,7 @@ export class Factura {
 
     constructor(id: number, fecha: Date, numeroFactura: number, cliente: Cliente, detalles: Detalle[]){
         this.id = id;
-        this.fecha = fecha;
+        this.fecha = datepipe.transform(fecha, 'YYYY-MM-dd') || '';
         this.numeroFactura = numeroFactura;
         this.cliente = cliente;
         this.detalles = detalles;
