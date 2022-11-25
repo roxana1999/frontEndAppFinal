@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Factura } from 'src/app/models/Factura';
-import { listaFacturas } from './lista-facturas';
 import {FormGroup, FormControl} from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { obtenerListaFacturas } from './funciones/obtenerListaFacturas';
 
 @Component({
   selector: 'app-factura',
@@ -22,9 +22,7 @@ export class FacturaComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    if (localStorage.getItem('listaFacturas')==null) 
-      localStorage.setItem('listaFacturas', JSON.stringify(listaFacturas));
-    this.listaFacturas = JSON.parse(localStorage.getItem('listaFacturas')!);
+    this.listaFacturas = obtenerListaFacturas();
   }
 
   datepipe: DatePipe = new DatePipe('en-US')

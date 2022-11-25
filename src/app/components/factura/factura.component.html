@@ -33,7 +33,6 @@
           <tr>
             <th scope="column">ID</th>
             <th scope="column">Fecha</th>
-            <th scope="column">Numero</th>
             <th scope="column">Cliente</th>
             <th scope="column">total</th>
             <th scope="column"></th>
@@ -43,20 +42,13 @@
           <tr *ngFor="let factura of listaFacturas">
             <th scope="row">{{ factura.id }}</th>
             <td>{{ factura.fecha }}</td>
-            <td>{{ factura.numeroFactura }}</td>
             <td>{{ factura.cliente.nombreApellido }}</td>
             <td class="guaranies">{{ factura.total }}</td>
             <td>
                 <div class="d-flex flex-column flex-md-row" style="gap: 10px;">
-                    <a href="" class="btn btn-secondary">Ver detalle</a>
+                    <a [routerLink]="['verDetalle', factura.id]" class="btn btn-secondary">Ver detalle</a>
                 </div>
             </td>
-            <!-- <td>
-              <div class="d-flex flex-column flex-md-row" style="gap: 10px;">
-                <a [routerLink]="['actualizarCliente', factura.rufactura]" class="btn btn-secondary"> Modificar</a>
-                <a [routerLink]="['eliminarCliente', factura.ruc]" class="btn btn-danger"> Eliminar</a>
-              </div>
-            </td> -->
           </tr>
         </tbody>
       </table>

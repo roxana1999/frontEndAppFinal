@@ -1,1 +1,109 @@
-<p>ver-detalle works!</p>
+<!-- style="display: flex;align-items: flex-end;" -->
+<!-- <p>{{formatFecha(range.value.start)}} - {{formatFecha(range.value.end)}}</p>
+<div style="display: flex;align-items: flex-end; gap: 20px;">
+  <div>
+    <mat-date-range-input [formGroup]="range" [rangePicker]="picker" class="hidden">
+      <input matStartDate formControlName="start" class="hidden">
+      <input matEndDate formControlName="end" class="hidden">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker class="hidden"></mat-date-range-picker>
+  </div>
+  <div class="form-group">
+    <label for="cliente">Cliente</label>
+    <input id="cliente" type="text" [(ngModel)]="nombreCliente">
+  </div>  
+  <button class="btn btn-secondary" (click)="filtrar()">Aplicar</button>
+  <button class="btn btn-secondary" (click)="clear()">Limpiar</button>
+</div> -->
+<div id="app" class="col-11">
+
+    <div class="row my-3">
+      <div class="col-10">
+        <h1>Apepu Market</h1>
+        <p>Av. El Ciclon</p>
+        <p>esquina olimpero pecho frio</p>
+      </div>
+    </div>
+  
+    <p>{{formatFecha(range.value.start)}} - {{formatFecha(range.value.end)}}</p>
+<div style="display: flex;align-items: flex-end; gap: 20px;">
+  <div>
+    <mat-date-range-input [formGroup]="range" [rangePicker]="picker" class="hidden">
+      <input matStartDate formControlName="start" class="hidden">
+      <input matEndDate formControlName="end" class="hidden">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker class="hidden"></mat-date-range-picker>
+  </div>
+  <div class="form-group">
+    <label for="producto">Producto</label>
+    <input id="producto" type="text" [(ngModel)]="nombreProducto">
+  </div>  
+  <button class="btn btn-secondary" (click)="filtrar()">Aplicar</button>
+  <button class="btn btn-secondary" (click)="clear()">Limpiar</button>
+</div> 
+    <hr />
+  
+    <div class="row fact-info mt-3">
+      <div class="col-3">
+        <h5>Facturar a</h5>
+        <p>
+          {{factura.cliente.nombreApellido}}
+        </p>
+      </div>
+      <div class="col-3">
+        <h5>N° de factura</h5>
+        <h5>Fecha</h5>
+      </div>
+      <div class="col-3">
+        <h5>{{factura.numeroFactura}}</h5>
+        <p>{{factura.fecha}}</p>
+      </div>
+    </div>
+  
+
+    <div *ngIf="detalles.length > 0; else elseBlock" class="row my-5">
+        <div class="table-responsive table table-borderless factura">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="column">Cantidad</th>
+                <th scope="column">Descripcion</th>
+                <th scope="column">Precio Unitario</th>
+                <th scope="column">Total detalle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let detalle of detalles">
+                <td>{{ detalle.cantidad }}</td>
+                <td>{{ detalle.producto.nombre }}</td>
+                <td class="guaranies">{{ detalle.producto.precioDeVenta }}</td>
+                <td class="guaranies">{{ detalle.totalDetalle }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>Total Factura</th>
+                  <th class="guaranies">{{factura.total}}</th>
+                </tr>
+              </tfoot>
+          </table>
+        </div>
+      </div>
+  
+      <ng-template #elseBlock>
+        <div class="espacio"></div>
+        <div class="sinData">
+          <p class="letterBig">Sin datos</p>
+        </div>
+      </ng-template>
+
+    <div class="cond row">
+      <div class="col-12 mt-3">
+        <p>Derechos Reservados. Apepu Inc.</p>
+      </div>
+    </div>
+</div>

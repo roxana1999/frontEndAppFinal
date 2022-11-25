@@ -9,6 +9,7 @@ import { CrearProductoComponent } from './components/productos/crear-producto/cr
 import { EliminarProductoComponent } from './components/productos/eliminar-producto/eliminar-producto.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { FacturaComponent } from './components/factura/factura.component';
+import { VerDetalleComponent } from './components/factura/ver-detalle/ver-detalle.component';
 
 const routes: Routes = [
   {path: 'productos', component: ProductosComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'clientes/actualizarCliente/:ruc', component: ActualizarClienteComponent},
   {path: 'clientes/eliminarCliente/:ruc', component: EliminarClienteComponent},
   {path: 'facturas', component: FacturaComponent},
+  {path: 'facturas/verDetalle/:id', component: VerDetalleComponent},
 ];
 
 @NgModule({
