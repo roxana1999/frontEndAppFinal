@@ -8,6 +8,8 @@ import { ActualizarProductoComponent } from './components/productos/actualizar-p
 import { CrearProductoComponent } from './components/productos/crear-producto/crear-producto.component';
 import { EliminarProductoComponent } from './components/productos/eliminar-producto/eliminar-producto.component';
 import { ProductosComponent } from './components/productos/productos.component';
+import { CrearVentaComponent } from './components/venta-productos/crear-venta/crear-venta.component';
+import { VentaProductos } from './models/ventaProductos';
 
 const routes: Routes = [
   {path: 'productos', component: ProductosComponent},
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path: 'clientes/crearCliente', component: CrearClienteComponent},
   {path: 'clientes/actualizarCliente/:ruc', component: ActualizarClienteComponent},
   {path: 'clientes/eliminarCliente/:ruc', component: EliminarClienteComponent},
+  {path: 'ventaProductos', component: VentaProductos},
+  {path: 'ventaProductos/crearVenta', component: CrearVentaComponent},
 ];
 
 @NgModule({
