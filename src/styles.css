@@ -4,3 +4,7 @@
 .espacio-15{
     height: 15px;
 }
+
+.guaranies:before{
+    content: '₲ ';
+}
