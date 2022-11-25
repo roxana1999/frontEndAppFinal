@@ -21,8 +21,14 @@
     <label for="cliente">Cliente</label>
     <input id="cliente" type="text" [(ngModel)]="nombreCliente">
   </div>  
-  <button class="btn btn-secondary" (click)="filtrar()">Aplicar</button>
-  <button class="btn btn-secondary" (click)="clear()">Limpiar</button>
+  <button (click)="filtrar()" mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon">
+    <mat-icon>filter_list</mat-icon>
+  </button>
+  <button (click)="clear()" mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <!-- <button class="btn btn-secondary" (click)="filtrar()">Aplicar</button>
+  <button class="btn btn-secondary" (click)="clear()">Limpiar</button> -->
 </div>
 
 <div class="espacio"></div>

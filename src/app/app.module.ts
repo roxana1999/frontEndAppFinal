@@ -20,6 +20,7 @@ import { ActualizarClienteComponent } from './components/clientes/actualizar-cli
 import { FacturaComponent } from './components/factura/factura.component';
 import { RegistrarComponent } from './components/factura/registrar/registrar.component';
 import { VerDetalleComponent } from './components/factura/ver-detalle/ver-detalle.component';
+import { AggDetalleComponent } from './components/factura/registrar/agg-detalle/agg-detalle.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { VerDetalleComponent } from './components/factura/ver-detalle/ver-detall
     ActualizarClienteComponent,
     FacturaComponent,
     RegistrarComponent,
-    VerDetalleComponent
+    VerDetalleComponent,
+    AggDetalleComponent
   ],
   imports: [
     BrowserModule,
