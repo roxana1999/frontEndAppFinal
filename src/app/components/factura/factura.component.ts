@@ -29,7 +29,7 @@ export class FacturaComponent implements OnInit {
 
   formatFecha(date: Date | null | undefined): string{
     if(date != null && date != undefined){
-      return this.datepipe.transform(date, 'YYYY-MM-dd') || '';
+      return this.datepipe.transform(date, 'dd-MM-YYYY') || '';
     }
     else return '';
   }
