@@ -1,109 +1,134 @@
+<div class="espacio"></div>
 <div *ngIf="success; else mostrarForm">
-    <div class="alert alert-success" role="alert">
-        Se ha registrado correctamente la factura
-    </div>
-    <button mat-raised-button color="primary" routerLink="/facturas">Volver</button>
+  <div class="alert alert-success" role="alert">
+    Se ha registrado correctamente la factura
+  </div>
+  <button mat-raised-button color="primary" routerLink="/facturas">
+    Volver
+  </button>
 </div>
 
 <ng-template #mostrarForm>
-    <div class="container">
-        <form [formGroup]="options"  #forma="ngForm">
-                <div class="row my-3">
-                <div class="col-10">
-                    <h1>Apepu Market</h1>
-                    <p>Av. El Ciclon</p>
-                    <p>esquina olimpero pecho frio</p>
-                </div>
-                </div>
-            
-                <hr />
-            
-                <div class="row fact-info mt-3">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Elije un cliente</mat-label>
-                        <mat-select [formControl]="clienteNombreControl" [(ngModel)]="clienteNombre">
-                            <mat-option>--</mat-option>
-                            <mat-option *ngFor="let cliente of listaClientes" [value]="cliente">
-                            {{cliente.nombreApellido}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                <div class="col-3">
-                    <h5>N° de factura</h5>
-                    <h5>Fecha</h5>
-                </div>
-                <div class="col-3">
-                    <h5>-</h5>
-                    <p>{{fecha}}</p>
-                </div>
-                </div>
-            
-            
-                
-                    <div class="table-responsive table table-borderless factura">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="column">
-                                    <mat-form-field >
-                                        <mat-label>Cantidad</mat-label>
-                                        <input matInput type="number" min="1" formControlName="cantidad" >
-                                    </mat-form-field>
-                                </th>
-                                <th scope="column">
-                                    <mat-form-field>
-                                        <mat-label>Elije un producto</mat-label>
-                                        <mat-select [formControl]="productoControl" [(ngModel)]="producto">
-                                            <mat-option>--</mat-option>
-                                            <mat-option *ngFor="let producto of listaProductos" [value]="producto">
-                                            {{producto.nombre}}
-                                            </mat-option>
-                                        </mat-select>
-                                        </mat-form-field>
-                                </th>
-                                <th scope="column"></th>
-                                <th scope="column"></th>
-                                <th scope="column">
-                                    <button (click)="agregarDetalle()" mat-fab color="primary" aria-label="Example icon button with a delete icon">
-                                        <mat-icon>add</mat-icon>
-                                    </button>
-                                </th>
-                            </tr>
-                        <tr>
-                            <th scope="column">Cantidad</th>
-                            <th scope="column">Descripcion</th>
-                            <th scope="column">Precio Unitario</th>
-                            <th scope="column">Total detalle</th>
-                        </tr>
-                        </thead>
-                        <tbody *ngIf="detalles.length > 0">
-                            <tr *ngFor="let detalle of detalles">
-                                <td>{{ detalle.cantidad }}</td>
-                                <td>{{ detalle.producto.nombre }}</td>
-                                <td class="guaranies">{{ detalle.producto.precioDeVenta }}</td>
-                                <td class="guaranies">{{ detalle.totalDetalle }}</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Total Factura</th>
-                            <th class="guaranies">{{totalFactura}}</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    </div>
-            <div class="row">
-                <button (click)="submit()" [disabled]="clienteNombre == null || detalles.length < 1" mat-raised-button color="primary" >
-                    Registrar
-                </button>
-            </div> 
-        </form>
-        <div class="cond row">
-            <div class="col-12 mt-3">
-            <p>Derechos Reservados. Apepu Inc.</p>
-            </div>
+  <div class="container">
+    <form [formGroup]="options" #forma="ngForm">
+      <div class="row my-3">
+        <div class="col-10">
+          <h1>Apepu Market</h1>
+          <p>Av. El Ciclon</p>
+          <p>esquina olimpero pecho frio</p>
         </div>
+      </div>
+
+      <hr />
+
+      <div class="row fact-info mt-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Elije un cliente</mat-label>
+          <mat-select
+            [formControl]="clienteNombreControl"
+            [(ngModel)]="clienteNombre"
+          >
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let cliente of listaClientes" [value]="cliente">
+              {{ cliente.nombreApellido }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="col-3">
+          <h5>N° de factura</h5>
+          <h5>Fecha</h5>
+        </div>
+        <div class="col-3">
+          <h5>-</h5>
+          <p>{{ fecha }}</p>
+        </div>
+      </div>
+
+      <div class="table-responsive table table-borderless factura">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="column">
+                <mat-form-field>
+                  <mat-label>Cantidad</mat-label>
+                  <input
+                    matInput
+                    type="number"
+                    min="1"
+                    formControlName="cantidad"
+                  />
+                </mat-form-field>
+              </th>
+              <th scope="column">
+                <mat-form-field>
+                  <mat-label>Elije un producto</mat-label>
+                  <mat-select
+                    [formControl]="productoControl"
+                    [(ngModel)]="producto"
+                  >
+                    <mat-option>--</mat-option>
+                    <mat-option
+                      *ngFor="let producto of listaProductos"
+                      [value]="producto"
+                    >
+                      {{ producto.nombre }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </th>
+              <th scope="column"></th>
+              <th scope="column"></th>
+              <th scope="column">
+                <button
+                  (click)="agregarDetalle()"
+                  mat-fab
+                  color="primary"
+                  aria-label="Example icon button with a delete icon"
+                >
+                  <mat-icon>add</mat-icon>
+                </button>
+              </th>
+            </tr>
+            <tr>
+              <th scope="column">Cantidad</th>
+              <th scope="column">Descripcion</th>
+              <th scope="column">Precio Unitario</th>
+              <th scope="column">Total detalle</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="detalles.length > 0">
+            <tr *ngFor="let detalle of detalles">
+              <td>{{ detalle.cantidad }}</td>
+              <td>{{ detalle.producto.nombre }}</td>
+              <td class="guaranies">{{ detalle.producto.precioDeVenta }}</td>
+              <td class="guaranies">{{ detalle.totalDetalle }}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Total Factura</th>
+              <th class="guaranies">{{ totalFactura }}</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="row">
+        <button
+          (click)="submit()"
+          [disabled]="clienteNombre == null || detalles.length < 1"
+          mat-raised-button
+          color="primary"
+        >
+          Registrar
+        </button>
+      </div>
+    </form>
+    <div class="cond row">
+      <div class="col-12 mt-3">
+        <p>Derechos Reservados. Apepu Inc.</p>
+      </div>
     </div>
+  </div>
 </ng-template>

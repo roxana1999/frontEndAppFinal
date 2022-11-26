@@ -6,6 +6,7 @@ import { Factura } from 'src/app/models/Factura';
 import { Producto } from 'src/app/models/producto';
 import { obtenerListaClientes } from '../../clientes/funciones/obtenerListaClientes';
 import { obtenerListaProductos } from '../../productos/funciones/obtenerListaProductos';
+import { actualizarListaProductos } from '../funciones/actualizarListaProductos';
 import { saveFacturas } from '../funciones/guardar-facturas';
 import { obtenerListaFacturas } from '../funciones/obtenerListaFacturas';
 
@@ -52,6 +53,7 @@ export class RegistrarComponent implements OnInit {
     let factura = new Factura(ultimaFactura.id++, new Date(), ultimaFactura.numeroFactura++, this.clienteNombre, this.detalles);
     listaFacturas.push(factura);
     saveFacturas(listaFacturas);
+    actualizarListaProductos(this.detalles, this.listaProductos);
     this.success=true;
   }
 
