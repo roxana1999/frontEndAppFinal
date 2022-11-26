@@ -1,7 +1,7 @@
 <div class="espacio"></div>
 <div *ngIf="success; else mostrarForm">
   <div class="alert alert-success" role="alert">
-    Se ha registrado correctamente la factura
+    {{mensaje}}
   </div>
   <button mat-raised-button color="primary" routerLink="/facturas">
     Volver
@@ -88,6 +88,11 @@
                   <mat-icon>add</mat-icon>
                 </button>
               </th>
+            </tr>
+            <tr>
+              <div *ngIf="warning" class="alert alert-warning" role="alert">
+                {{mensaje}}
+              </div>
             </tr>
             <tr>
               <th scope="column">Cantidad</th>

@@ -54,22 +54,27 @@ export class RegistrarComponent implements OnInit {
     listaFacturas.push(factura);
     saveFacturas(listaFacturas);
     actualizarListaProductos(this.detalles, this.listaProductos);
-    this.success=true;
+    this.success=true; this.mensaje="Se ha registrado correctamente la factura."
   }
 
 
   agregarDetalle(): void{
+    this.warning = false;
     let detalle = new Detalle(this.producto, this.options.value.cantidad || 0);
-    let flagAgregaMismoProducto = false;
-    this.detalles.map((detail) => {
-      if(detail.producto.nombre == detalle.producto.nombre){
-        detail.cantidad += detalle.cantidad;
-        detail.totalDetalle += detalle.producto.precioDeVenta * detalle.cantidad;
-        flagAgregaMismoProducto = true;
-      }
-    })
-    if(!flagAgregaMismoProducto)this.detalles.push(detalle);
-
+    if (detalle.cantidad==0) return;
+    let index = this.detalles.findIndex( detail => detail.producto == this.producto)
+    if (index==-1){ //Si el producto no se encontró en la lista de Detalles (es nuevo)
+      this.verificarInventario(detalle.cantidad, this.producto.existencia)
+      if (this.warning) return;
+      this.detalles.push(detalle);
+    }
+    else {
+      let detail = this.detalles[index];
+      this.verificarInventario(detail.cantidad+detalle.cantidad, this.producto.existencia);
+      if (this.warning) return;
+      detail.cantidad += detalle.cantidad;
+      detail.totalDetalle += detalle.producto.precioDeVenta * detalle.cantidad;
+    }
     this.totalFactura = this.detalles.reduce((suma, detalle) => suma + detalle.totalDetalle,0);
   }
 
@@ -77,5 +82,9 @@ export class RegistrarComponent implements OnInit {
 
   }
 
+  verificarInventario(cantidad: number, existencia: number){
+    if (cantidad>existencia)
+      this.warning=true; this.mensaje='La cantidad a comprar excede a la del inventario.';
+  }
 
 }
