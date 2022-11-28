@@ -6,8 +6,8 @@
 <div class="d-flex flex-column flex-md-row align-items-md-center" style="gap: 20px; padding: 10px;">
   <div class="d-flex">
     <div style="width: 8rem;">
-      Desde:<span style="margin-left: 5px;"></span> {{formatFecha(range.value.start)}}<br>
-      Hasta:<span style="margin-left: 5px;"></span> {{formatFecha(range.value.end)}}
+      Desde:<span style="margin-left: 5px;"></span> {{formatFechaDMY(range.value.start)}}<br>
+      Hasta:<span style="margin-left: 5px;"></span> {{formatFechaDMY(range.value.end)}}
     </div>
     <div style="width: 3rem; margin-top: -1.2rem;">
       <mat-date-range-input [formGroup]="range" [rangePicker]="picker" class="hidden">
@@ -35,22 +35,26 @@
 </div>
 
 <div class="espacio"></div>
-<div *ngIf="listaDetalles.length > 0; else elseBlock">
+<div *ngIf="listaFacturas.length > 0; else elseBlock">
     <div class="table-responsive">
       <table class="table">
         <thead>
           <tr>
-            <th scope="column">Cantidad</th>
+            <th scope="column">Cliente</th>
+            <th scope="column">Fecha</th>
             <th scope="column">Producto</th>
+            <th scope="column">Cantidad</th>
             <th scope="column">Total Detalle</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let detalle of listaDetalles">
-            <th scope="row">{{ detalle.cantidad  }}</th>
-            <td>{{ detalle.producto.nombre }}</td>
-            <td class="guaranies">{{ formatearNumero(detalle.totalDetalle) }}</td>
-          </tr>
+        <tbody *ngFor="let factura of listaFacturas">
+            <tr *ngFor="let detalle of factura.detalles">
+              <td>{{factura.cliente.nombreApellido}}</td>
+              <td>{{formatFechaString(factura.fecha)}}</td>
+              <td>{{detalle.producto.nombre}}</td>
+              <td>{{detalle.cantidad}}</td>
+              <td class="guaranies">{{ formatearNumero(detalle.totalDetalle) }}</td>
+            </tr>
         </tbody>
       </table>
     </div>

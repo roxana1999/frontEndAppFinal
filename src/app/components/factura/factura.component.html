@@ -9,8 +9,8 @@
 <div class="d-flex flex-column flex-md-row align-items-md-center" style="gap: 20px; padding: 10px;">
   <div class="d-flex">
     <div style="width: 8rem;">
-      Desde:<span style="margin-left: 5px;"></span> {{formatFecha(range.value.start)}}<br>
-      Hasta:<span style="margin-left: 5px;"></span> {{formatFecha(range.value.end)}}
+      Desde:<span style="margin-left: 5px;"></span> {{formatFechaDMY(range.value.start)}}<br>
+      Hasta:<span style="margin-left: 5px;"></span> {{formatFechaDMY(range.value.end)}}
     </div>
     <div style="width: 3rem; margin-top: -1.2rem;">
       <mat-date-range-input [formGroup]="range" [rangePicker]="picker" class="hidden">
@@ -53,7 +53,7 @@
         <tbody>
           <tr *ngFor="let factura of listaFacturas">
             <th scope="row">{{ factura.id }}</th>
-            <td>{{ factura.fecha }}</td>
+            <td>{{ formatFechaString(factura.fecha) }}</td>
             <td>{{ factura.cliente.nombreApellido }}</td>
             <td class="guaranies">{{ formatearNumero(factura.total) }}</td>
             <td>
