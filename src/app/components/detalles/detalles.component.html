@@ -1,9 +1,6 @@
 <div class="espacio"></div>
 <div class="d-flex" style="justify-content: space-between">
-    <h3>Lista de facturas</h3>
-    <div>
-      <a routerLink="registrar" class="btn btn-primary" style="margin-left: auto">Registrar Factura</a>
-    </div>
+    <h3>Lista de detalles</h3>
 </div>
 
 <div class="d-flex flex-column flex-md-row align-items-md-center" style="gap: 20px; padding: 10px;">
@@ -22,8 +19,8 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="cliente">Cliente:</label>
-    <input style="margin-left: 5px;" id="cliente" type="text" [(ngModel)]="nombreCliente">
+    <label for="cliente">Producto:</label>
+    <input style="margin-left: 5px;" id="cliente" type="text" [(ngModel)]="nombreProducto">
   </div>
   <div class="d-flex" style="gap: 10px;">
     <button (click)="filtrar()" mat-mini-fab color="primary" class="mat-elevation-z0" aria-label="Filtrar">
@@ -38,29 +35,21 @@
 </div>
 
 <div class="espacio"></div>
-<div *ngIf="listaFacturas.length > 0; else elseBlock">
+<div *ngIf="listaDetalles.length > 0; else elseBlock">
     <div class="table-responsive">
       <table class="table">
         <thead>
           <tr>
-            <th scope="column">ID</th>
-            <th scope="column">Fecha</th>
-            <th scope="column">Cliente</th>
-            <th scope="column">total</th>
-            <th scope="column"></th>
+            <th scope="column">Cantidad</th>
+            <th scope="column">Producto</th>
+            <th scope="column">Total Detalle</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let factura of listaFacturas">
-            <th scope="row">{{ factura.id }}</th>
-            <td>{{ factura.fecha }}</td>
-            <td>{{ factura.cliente.nombreApellido }}</td>
-            <td class="guaranies">{{ formatearNumero(factura.total) }}</td>
-            <td>
-                <div class="d-flex flex-column flex-md-row" style="gap: 10px;">
-                    <a [routerLink]="['verDetalle', factura.id]" class="btn btn-secondary">Ver detalle</a>
-                </div>
-            </td>
+          <tr *ngFor="let detalle of listaDetalles">
+            <th scope="row">{{ detalle.cantidad  }}</th>
+            <td>{{ detalle.producto.nombre }}</td>
+            <td class="guaranies">{{ formatearNumero(detalle.totalDetalle) }}</td>
           </tr>
         </tbody>
       </table>
