@@ -3,6 +3,10 @@ import { Factura } from 'src/app/models/Factura';
 import {FormGroup, FormControl} from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { obtenerListaFacturas } from './funciones/obtenerListaFacturas';
+import { formatearNumero } from '../funciones-formateo/formatearNumero';
+import { formatFecha } from '../funciones-formateo/formatFecha';
+import { formatFechaDMY } from '../funciones-formateo/formatFechaDMY';
+import { formatFechaString } from '../funciones-formateo/formatFechaString';
 
 @Component({
   selector: 'app-factura',
@@ -15,6 +19,10 @@ export class FacturaComponent implements OnInit {
   inicio!: string;
   fin!: string;
   nombreCliente?: string;
+  formatFecha = formatFecha;
+  formatFechaDMY = formatFechaDMY;
+  formatFechaString = formatFechaString;
+  formatearNumero = formatearNumero;
 
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
@@ -25,17 +33,8 @@ export class FacturaComponent implements OnInit {
     this.listaFacturas = obtenerListaFacturas();
   }
 
-  datepipe: DatePipe = new DatePipe('en-US')
-
-  formatFecha(date: Date | null | undefined): string{
-    if(date != null && date != undefined){
-      return this.datepipe.transform(date, 'dd-MM-YYYY') || '';
-    }
-    else return '';
-  }
-
-
   filtrar(){
+    this.listaFacturas = obtenerListaFacturas();
     this.inicio  = this.formatFecha(this.range.value.start);
     this.fin  = this.formatFecha(this.range.value.end);
 

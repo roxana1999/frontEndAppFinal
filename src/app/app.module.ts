@@ -21,6 +21,7 @@ import { FacturaComponent } from './components/factura/factura.component';
 import { RegistrarComponent } from './components/factura/registrar/registrar.component';
 import { VerDetalleComponent } from './components/factura/ver-detalle/ver-detalle.component';
 import { AggDetalleComponent } from './components/factura/registrar/agg-detalle/agg-detalle.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AggDetalleComponent } from './components/factura/registrar/agg-detalle/
     FacturaComponent,
     RegistrarComponent,
     VerDetalleComponent,
-    AggDetalleComponent
+    AggDetalleComponent,
+    DetallesComponent
   ],
   imports: [
     BrowserModule,

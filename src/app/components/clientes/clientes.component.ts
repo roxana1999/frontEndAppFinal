@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
+import { formatearNumero } from '../funciones-formateo/formatearNumero';
 import { listaClientes } from './listaClientes';
 
 @Component({
@@ -9,6 +10,7 @@ import { listaClientes } from './listaClientes';
 })
 export class ClientesComponent implements OnInit {
   listaClientes: Cliente[] = [];
+  formatearNumero = formatearNumero;
 
   constructor() { }
 

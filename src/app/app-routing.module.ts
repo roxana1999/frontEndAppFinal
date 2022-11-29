@@ -11,6 +11,7 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { FacturaComponent } from './components/factura/factura.component';
 import { VerDetalleComponent } from './components/factura/ver-detalle/ver-detalle.component';
 import { RegistrarComponent } from './components/factura/registrar/registrar.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
 
 const routes: Routes = [
   {path: 'productos', component: ProductosComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'facturas', component: FacturaComponent},
   {path: 'facturas/verDetalle/:id', component: VerDetalleComponent},
   {path: 'facturas/registrar', component: RegistrarComponent},
+  {path: 'detalles', component: DetallesComponent},
 ];
 
 @NgModule({
